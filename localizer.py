@@ -412,14 +412,13 @@ def Normalize(img, is_qr):
 
 IdealPositions = {}
 
-with open('./Data/markup.json', 'r') as file:
+with open('markup.json', 'r') as file:
     data = json.load(file)
 summ = 0
 count = 0
 ok = 0
 for object in data['objects']:
-    img_path = os.path.join(os.path.dirname('./Data/'), object['image'])
-    img = cv2.imread(img_path)
+    img = cv2.imread(object['image'])
     type = 1 - object['markup'][0]['type']
     bboxes = [m['bbox'] for m in object['markup']][0]
     ploc = [m['ploc'] for m in object['markup']][0]
